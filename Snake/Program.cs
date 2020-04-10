@@ -10,31 +10,47 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-            int x = 1;
-            Func1(x);
-            Console.WriteLine("Call Func1. x = " + x);
+            Point p1 = new Point(11, 13, '*');
+            Point p2 = new Point(14, 15, '#');
+            Point p3 = new Point(17, 18, '%');
+            Point p4 = new Point(24, 25, '$');
 
-            x = 1;
-            Func2(x);
-            Console.WriteLine("Call Func2. x = " + x);
 
-            x = 1;
-            Func3(x);
-            Console.WriteLine("Call Func3. x = " + x);
+            // Создание списка целочисленных значений
+            List<int> numList = new List<int>();
+            numList.Add(0);
+            numList.Add(1);
+            numList.Add(2);
 
-            Point p1 = new Point(1, 3, '*');
-            Move(p1, 10, 10);
-            Console.WriteLine("Call Move. p1.x = " + p1.x + ", p1.y = " + p1.y);
+            // Обращение к элементам списа по индексу
+            int x = numList[0];
+            int y = numList[1];
+            int z = numList[2];
 
-            Point p2 = new Point(4, 5, '#');
-            p1 = p2;
-            p2.x = 8;
-            p2.y = 8;
-            Console.WriteLine("p1 = p2. p1.x = " + p1.x + ", p1.y = " + p1.y + "; p2.x = " + p2.x + ", p2.y = " + p2.y);
+            foreach(int i in numList)
+            {
+                Console.WriteLine(i);
+            }
 
-            p1 = new Point(1, 3, '*');
-            Update(p1);
-            Console.WriteLine("Call Update. p1.x = " + p1.x + ", p1.y = " + p1.y);
+            // Удаление элемента по номеру индекса
+            numList.RemoveAt(1);
+            foreach (int i in numList)
+            {
+                Console.WriteLine(i);
+            }
+            
+            // Создание списка объектов Point
+            List<Point> pointList = new List<Point>();
+            pointList.Add(p1);
+            pointList.Add(p2);
+            pointList.Add(p3);
+            pointList.Add(p4);
+
+            foreach (Point i in pointList)
+            {
+                //Console.WriteLine(i.x + " " + i.y + " " + i.sym);
+                i.Draw();
+            }
 
             Console.ReadLine();
         }
