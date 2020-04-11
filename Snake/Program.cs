@@ -14,14 +14,8 @@ namespace Snake
             Console.SetBufferSize(120, 30);
 
             // Отрисовка рамки
-            HorizontalLine topLine = new HorizontalLine(0, 118, 0, '+');
-            HorizontalLine bottomLine = new HorizontalLine(0, 118, 28, '+');
-            VerticalLine leftLine = new VerticalLine(0, 28, 0, '+');
-            VerticalLine rightLine = new VerticalLine(0, 28, 118, '+');
-            topLine.Draw();
-            bottomLine.Draw();
-            leftLine.Draw();
-            rightLine.Draw();
+            Walls walls = new Walls(120, 30);
+            walls.Draw();
 
             // Отрисовка точек
             Point p = new Point(4, 5, '*');
@@ -33,8 +27,13 @@ namespace Snake
             food.Draw();
 
             Console.CursorVisible = false;
+
             while (true)
             {
+                if ( walls.IsHit(snake) || snake.IsHitTail() )
+                {
+                    break;
+                }
                 if (snake.Eat(food))
                 {
                     food = foodCreator.CreateFood();
