@@ -53,7 +53,25 @@ namespace Snake
                     snake.HandleKey(key.Key);
                 }
             }
+            WriteGameOver();
             Console.ReadLine();
-        }      
+        }
+
+        static void WriteGameOver()
+        {
+            int xOffset = 44;
+            int yOffset = 12;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.SetCursorPosition(xOffset, yOffset++);
+            WriteText("==============================", xOffset, yOffset++);
+            WriteText("= И Г Р А    О К О Н Ч Е Н А =", xOffset, yOffset++);
+            WriteText("==============================", xOffset, yOffset++);
+        }
+
+        static void WriteText(String text, int xOffset, int yOffset)
+        {
+            Console.SetCursorPosition(xOffset, yOffset);
+            Console.WriteLine(text);
+        }
     }
 }
